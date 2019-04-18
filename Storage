@@ -1,0 +1,57 @@
+clusters:
+  ossmlb:
+    node_default:
+      groups:
+        - kafkaInSL
+        - nondatapath
+    nodes:
+      - machine_id: "a"
+        groups:
+          - kafkaInSL
+          - nondatapath
+          - zookeeper
+        instance_id: "01"
+        ipaddresses:
+          - {address: 169.254.133.166, netmask: 255.255.0.0, vlan: 133, adapter: 0, mac: "0c:c4:7a:3c:ca:6c", port: ipmi, routes: {default: 169.254.133.1}}
+          - {address: 172.23.133.165, netmask: 255.255.255.0, vlan: 106, adapter: 1, mac: "0c:c4:7a:65:e7:74", port: eth0, routes: {default: 172.23.133.1}}
+          - {address: 10.3.83.181, netmask: 255.255.255.0, vlan: 19, adapter: 2, mac: "0c:c4:7a:65:e7:75", port: eth1, routes: {"10.45.10.128/25": 10.3.83.1}}
+      - machine_id: "b"
+        groups:
+          - kafkaInSL
+          - nondatapath
+          - zookeeper
+        instance_id: "01"
+        ipaddresses:
+          - {address: 169.254.133.167, netmask: 255.255.0.0, vlan: 133, adapter: 0, mac: "0c:c4:7a:3c:ca:7a", port: ipmi, routes: {default: 169.254.133.1}}
+          - {address: 172.23.133.166, netmask: 255.255.255.0, vlan: 106, adapter: 1, mac: "0c:c4:7a:65:e2:4c", port: eth0, routes: {default: 172.23.133.1}}
+          - {address: 10.3.83.182, netmask: 255.255.255.0, vlan: 19, adapter: 2, mac: "0c:c4:7a:65:e2:4d", port: eth1, routes: {"10.45.10.128/25": 10.3.83.1}}
+      - machine_id: "c"
+        groups:
+          - kafkaInSL
+          - nondatapath
+          - zookeeper
+        instance_id: "01"
+        ipaddresses:
+          - {address: 169.254.133.168, netmask: 255.255.0.0, vlan: 133, adapter: 0, mac: "0c:c4:7a:3c:ca:8b", port: ipmi, routes: {default: 169.254.133.1}}
+          - {address: 172.23.133.167, netmask: 255.255.255.0, vlan: 106, adapter: 1, mac: "0c:c4:7a:65:e7:2c", port: eth0, routes: {default: 172.23.133.1}}
+          - {address: 10.3.83.183, netmask: 255.255.255.0, vlan: 19, adapter: 2, mac: "0c:c4:7a:65:e7:2d", port: eth1, routes: {"10.45.10.128/25": 10.3.83.1}}
+      - machine_id: "d"
+        groups:
+          - kafkaInSL
+          - nondatapath
+          - zookeeper
+        instance_id: "01"
+        ipaddresses:
+          - {address: 169.254.133.169, netmask: 255.255.0.0, vlan: 133, adapter: 0, mac: "02:25:90:f9:cb:bc", port: ipmi, routes: {default: 169.254.133.1}}
+          - {address: 172.23.133.168, netmask: 255.255.255.0, vlan: 106, adapter: 1, mac: "00:25:90:f9:cb:bc", port: eth0, routes: {default: 172.23.133.1}}
+          - {address: 10.3.83.184, netmask: 255.255.255.0, vlan: 19, adapter: 2, mac: "00:25:90:f9:cb:bd", port: eth1, routes: {"10.45.10.128/25": 10.3.83.1}}
+      - machine_id: "e"
+        groups:
+          - kafkaInSL
+          - nondatapath
+          - zookeeper
+        instance_id: "01"
+        ipaddresses:
+          - {address: 169.254.133.165, netmask: 255.255.0.0, vlan: 133, adapter: 0, mac: "02:25:90:f9:ce:68", port: ipmi, routes: {default: 169.254.133.1}}
+          - {address: 172.23.133.164, netmask: 255.255.255.0, vlan: 106, adapter: 1, mac: "00:25:90:f9:ce:68", port: eth0, routes: {default: 172.23.133.1}}
+          - {address: 10.3.83.185, netmask: 255.255.255.0, vlan: 19, adapter: 2, mac: "00:25:90:f9:ce:69", port: eth1, routes: {"10.45.10.128/25": 10.3.83.1}}
