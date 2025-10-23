@@ -1,0 +1,52 @@
+def generate_kafka_deployment_plan(region: str, az_list: list, instance_type: str = "t3.medium", kafka_version: str = "3.5.1") -> dict:
+    """
+    Generates a Kafka deployment plan across 3 AWS Availability Zones.
+
+    Args:
+        region (str): AWS region (e.g., 'us-east-1').
+        az_list (list): List of 3 Availability Zones in the region.
+        instance_type (str): EC2 instance type for Kafka and Zookeeper.
+        kafka_version (str): Kafka version to deploy.
+
+    Returns:
+        dict: Kafka and Zookeeper deployment plan.
+    """
+
+    if len(az_list) != 3:
+        raise ValueError("You must provide exactly 3 availability zones.")
+
+    deployment_plan = {
+        "region": region,
+        "availability_zones": az_list,
+        "kafka_version": kafka_version,
+        "kafka_brokers": [],
+        "zookeeper_nodes": [],
+        "networking": {
+            "vpc": "Custom VPC with 3 public/private subnets",
+            "security_groups": [
+                "Allow internal Kafka/Zookeeper ports (9092, 2181)",
+                "Allow SSH (22) from bastion or admin IP"
+            ]
+        },
+        "storage": "EBS (gp3) with 100GB per node",
+        "monitoring": "CloudWatch logs & metrics agent",
+        "iam_roles": "EC2 role with SSM and CloudWatch permissions"
+    }
+
+    for i, az in enumerate(az_list):
+        deployment_plan["kafka_brokers"].append({
+            "id": f"kafka-{i+1}",
+            "az": az,
+            "instance_type": instance_type,
+            "private_ip": f"10.0.{i}.10",  # Example IP; assign based on subnet
+            "port": 9092
+        })
+        deployment_plan["zookeeper_nodes"].append({
+            "id": f"zookeeper-{i+1}",
+            "az": az,
+            "instance_type": instance_type,
+            "private_ip": f"10.0.{i}.20",
+            "port": 2181
+        })
+
+    return deployment_plan
